@@ -1,0 +1,7 @@
+build-debug/
+build-release/
+build-profile/
+build-macos/
+dist/
+
+foldersizeview/foldersizeview.pro.user

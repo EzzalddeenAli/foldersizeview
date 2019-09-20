@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>FolderSizeView</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="WebView" name="webview" native="true"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionExport"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <widget class="QMenu" name="menuHow_to_encourage_me">
+     <property name="title">
+      <string>Encourage Me</string>
+     </property>
+     <addaction name="actionBuy_me_a_coffee"/>
+     <addaction name="actionBuy_my_products"/>
+     <addaction name="actionStar_my_projects"/>
+    </widget>
+    <addaction name="actionReleases"/>
+    <addaction name="actionFeedback"/>
+    <addaction name="separator"/>
+    <addaction name="actionFollow_Weibo"/>
+    <addaction name="actionFollow_Wechat"/>
+    <addaction name="menuHow_to_encourage_me"/>
+    <addaction name="actionContact_Me"/>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>Action</string>
+    </property>
+    <addaction name="actionReload"/>
+    <addaction name="separator"/>
+    <addaction name="actionGroup_by_file_extension"/>
+    <addaction name="actionSunburst_Mode"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open Folder</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionBuy_me_a_coffee">
+   <property name="text">
+    <string>Buy me a coffee</string>
+   </property>
+  </action>
+  <action name="actionBuy_my_products">
+   <property name="text">
+    <string>Buy my products</string>
+   </property>
+  </action>
+  <action name="actionStar_my_projects">
+   <property name="text">
+    <string>Star my projects</string>
+   </property>
+  </action>
+  <action name="actionFeedback">
+   <property name="text">
+    <string>Feedback</string>
+   </property>
+  </action>
+  <action name="actionExport">
+   <property name="text">
+    <string>Export</string>
+   </property>
+  </action>
+  <action name="actionReload">
+   <property name="text">
+    <string>Reload</string>
+   </property>
+  </action>
+  <action name="actionFollow_Wechat">
+   <property name="text">
+    <string>Follow Wechat</string>
+   </property>
+  </action>
+  <action name="actionReleases">
+   <property name="text">
+    <string>Releases</string>
+   </property>
+  </action>
+  <action name="actionContact_Me">
+   <property name="text">
+    <string>Contact Me</string>
+   </property>
+  </action>
+  <action name="actionFollow_Weibo">
+   <property name="text">
+    <string>Follow Weibo</string>
+   </property>
+  </action>
+  <action name="actionGroup_by_file_extension">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Group by file extension</string>
+   </property>
+  </action>
+  <action name="actionSunburst_Mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Sunburst Mode</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>WebView</class>
+   <extends>QWidget</extends>
+   <header>webview.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

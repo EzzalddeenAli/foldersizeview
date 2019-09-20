@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>foldersizeview.icns</file>
+    </qresource>
+    <qresource prefix="/template">
+        <file alias="treemap">resource/template/treemap.html</file>
+        <file alias="sunburst">resource/template/sunburst.html</file>
+    </qresource>
+    <qresource prefix="/res">
+        <file alias="icon">resource/icon.png</file>
+        <file alias="index">resource/index.html</file>
+        <file alias="reveal">resource/reveal.ico</file>
+        <file alias="echarts">resource/echarts.txt</file>
+        <file alias="webchannel">resource/qwebchannel.txt</file>
+    </qresource>
+</RCC>

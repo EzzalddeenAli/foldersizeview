@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="qrc:///res/webchannel"></script>
+</head>
+
+<body style="height: 100%; margin: 0; background: #333333">
+    <div id="container" style="height: 100%"></div>
+    <!-- <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script> -->
+    <script type="text/javascript">
+        {{{core}}}
+    </script>
+    <script type="text/javascript">
+
+
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom, 'light');
+        var app = {};
+        option = null;
+
+        var diskData = {{{data}}};
+
+
+        function colorMappingChange(value) {
+            var levelOption = getLevelOption(value);
+            chart.setOption({
+                series: [{
+                    levels: levelOption
+                }]
+            });
+        }
+
+        var formatUtil = echarts.format;
+
+        function getLevelOption() {
+            return [{
+                    itemStyle: {
+                        normal: {
+                            borderColor: '#777',
+                            borderWidth: 0,
+                            gapWidth: 1
+                        }
+                    },
+                    upperLabel: {
+                        normal: {
+                            show: false
+                        }
+                    }
+                },
+                {
+                    itemStyle: {
+                        normal: {
+                            borderColor: '#555',
+                            borderWidth: 5,
+                            gapWidth: 1
+                        },
+                        emphasis: {
+                            borderColor: '#ddd'
+                        }
+                    }
+                },
+                {
+                    colorSaturation: [0.35, 0.5],
+                    itemStyle: {
+                        normal: {
+                            borderWidth: 5,
+                            gapWidth: 1,
+                            borderColorSaturation: 0.6
+                        }
+                    }
+                }
+            ];
+        }
+
+        var apiObject;
+        new QWebChannel(qt.webChannelTransport,function(channel){apiObject=channel.objects.apiObject;});
+
+        myChart.setOption(option = {
+
+            tooltip: {
+                formatter: function (info) {
+                    var sizeString = '';
+                    var value = info.value;
+                    if (value <= 1024) {
+                        sizeString = ''+value+'B';
+                    } else if (value <= 1024 * 1024) {
+                        sizeString = ''+ (value/1024.0).toFixed(2)+'KB';
+                    } else {
+                        sizeString = ''+ (value/1024.0/1024.0).toFixed(2)+'MB';
+                    }
+
+                    if (apiObject) {
+                        apiObject.JSSendMessage(info.data.path);
+                    }
+
+                    return [
+                        '<div class="tooltip-title">' + info.data.path + '</div>',
+                        '' + sizeString,
+                    ].join('');
+                }
+            },
+
+            series: [{
+                name: 'ROOT',
+                type: 'treemap',
+                visibleMin: 300,
+                label: {
+                    show: true,
+                    formatter: '{b}'
+                },
+                upperLabel: {
+                    normal: {
+                        show: true,
+                        height: 30
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        borderColor: '#fff'
+                    }
+                },
+                levels: getLevelOption(),
+                data: diskData
+            }]
+        });
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+    </script>
+</body>
+
+</html>
